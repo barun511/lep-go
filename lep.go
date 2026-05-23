@@ -1,8 +1,12 @@
 package main
 
-type board struct {
+type game struct {
 }
 
-func Game() *board {
-	return &board{}
+func (game *game) initialize(board [2][2]bool) {
+
+}
+
+func Game() *game {
+	return &game{}
 }
