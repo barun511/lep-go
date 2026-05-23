@@ -42,3 +42,28 @@ func TestCanInitializeGameWithSpecificBoardSize(t *testing.T) {
 
 	game.initialize(board)
 }
+
+
+func TestCanAdvanceBlinkerOneTick(t *testing.T) {
+	game := Game()
+
+	board := [3][3]bool {
+		{false, true, false},
+		{false, true, false},
+		{false, true, false},
+	}
+
+	game.initialize(board)
+
+	game.advanceOneTick()
+
+	newBoard := game.getCurrentBoard()
+
+	if newBoard != [3][3]bool {
+		{false, false, false},
+		{true, true, true},
+		{false, false, false},
+	} {
+		t.Errorf("Board does not tick correctly")
+	}
+}
