@@ -119,3 +119,31 @@ func TestUnderpopulationSingleCell(t *testing.T) {
 }
 
 
+
+func TestStillLife(t *testing.T) {
+	game := Game()
+
+	board := [][]bool{
+		{false, false, false, false},
+		{false, true, true, false},
+		{false, true, true, false},
+		{false, false, false, false},
+	}
+
+	game.initialize(board)
+
+	for i := 0; i<= 10; i++ {
+		game.advanceOneTick()
+		newBoard := game.getCurrentBoard()
+
+		if !reflect.DeepEqual(newBoard, [][]bool{
+			{false, false, false, false},
+			{false, false, false, false},
+			{false, false, false, false},
+		}) {
+			t.Errorf("Board still does not tick correctly")
+		}
+	}
+}
+
+
