@@ -147,4 +147,31 @@ func TestStillLife(t *testing.T) {
 	}
 }
 
+func TestFourDeath(t *testing.T) {
+	game := Game()
+
+	board := [][]bool{
+		{true, false, false, true},
+		{false, false, false, false},
+		{false, false, false, false},
+		{true, false, false, true},
+	}
+
+	game.initialize(board)
+
+	for i := 0; i<= 10; i++ {
+		game.advanceOneTick()
+		newBoard := game.getCurrentBoard()
+
+		if !reflect.DeepEqual(newBoard, [][]bool{
+			{false, false, false, false},
+			{false, false, false, false},
+			{false, false, false, false},
+			{false, false, false, false},
+		}) {
+			t.Errorf("Board still does not tick correctly")
+		}
+	}
+}
+
 
