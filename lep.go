@@ -1,11 +1,8 @@
 package main
 
-import "fmt"
-
-func main() {
-    fmt.Println("Hello, World!")
+type board struct {
 }
 
-func HelloWorld() (string) {
-    return "something";
+func Game() *board {
+	return &board{}
 }
