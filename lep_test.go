@@ -67,6 +67,8 @@ func TestCanAdvanceBlinkerOneTick(t *testing.T) {
 
 	game.advanceOneTick()
 
+	newBoard = game.getCurrentBoard()
+
 	if newBoard != [][]bool{
 		{false, true, false},
 		{false, true, false},
