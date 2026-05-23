@@ -5,8 +5,8 @@ import (
 )
 
 func TestHello(t *testing.T) {
-	hello := HelloWorld()
-	if hello != "something" {
-		t.Errorf("Test failed");
+	game := Game()
+	if game == nil {
+		t.Errorf("Wah wah no game")
 	}
 }
