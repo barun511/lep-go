@@ -138,7 +138,8 @@ func TestStillLife(t *testing.T) {
 
 		if !reflect.DeepEqual(newBoard, [][]bool{
 			{false, false, false, false},
-			{false, false, false, false},
+			{false, true, true, false},
+			{false, true, true, false},
 			{false, false, false, false},
 		}) {
 			t.Errorf("Board still does not tick correctly")
