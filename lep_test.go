@@ -15,26 +15,25 @@ func TestInitialGame(t *testing.T) {
 func TestCanInitializeGameWithRandomBoardSize(t *testing.T) {
 	game := Game()
 
-	board := make([][]bool, rand.IntN(5) + 2)
+	board := make([][]bool, rand.IntN(5)+2)
 
 	for i := range board {
-		board[i] = make([]bool, rand.IntN(5) + 2)
+		board[i] = make([]bool, rand.IntN(5)+2)
 	}
 
 	for i := range board {
 		for j := range board[i] {
-			board[i][j] = rand.IntN(1) % 2 == 0;
+			board[i][j] = rand.IntN(1)%2 == 0
 		}
 	}
 
 	game.initialize(board)
 }
 
-
 func TestCanInitializeGameWithSpecificBoardSize(t *testing.T) {
 	game := Game()
 
-	board := [3][3]bool {
+	board := [][]bool{
 		{false, true, false},
 		{false, true, false},
 		{false, true, false},
@@ -43,11 +42,10 @@ func TestCanInitializeGameWithSpecificBoardSize(t *testing.T) {
 	game.initialize(board)
 }
 
-
 func TestCanAdvanceBlinkerOneTick(t *testing.T) {
 	game := Game()
 
-	board := [3][3]bool {
+	board := [][]bool{
 		{false, true, false},
 		{false, true, false},
 		{false, true, false},
@@ -59,7 +57,7 @@ func TestCanAdvanceBlinkerOneTick(t *testing.T) {
 
 	newBoard := game.getCurrentBoard()
 
-	if newBoard != [3][3]bool {
+	if newBoard != [3][3]bool{
 		{false, false, false},
 		{true, true, true},
 		{false, false, false},
