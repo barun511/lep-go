@@ -79,8 +79,6 @@ func TestCanAdvanceBlinkerOneTick(t *testing.T) {
 	}
 }
 
-
-
 func TestUnderpopulationSingleCell(t *testing.T) {
 	game := Game()
 
@@ -104,7 +102,7 @@ func TestUnderpopulationSingleCell(t *testing.T) {
 		t.Errorf("Board does not tick correctly")
 	}
 
-	for i := 0; i<= 10; i++ {
+	for i := 0; i <= 10; i++ {
 		game.advanceOneTick()
 		newBoard = game.getCurrentBoard()
 
@@ -118,8 +116,6 @@ func TestUnderpopulationSingleCell(t *testing.T) {
 	}
 }
 
-
-
 func TestStillLife(t *testing.T) {
 	game := Game()
 
@@ -132,7 +128,7 @@ func TestStillLife(t *testing.T) {
 
 	game.initialize(board)
 
-	for i := 0; i<= 10; i++ {
+	for i := 0; i <= 10; i++ {
 		game.advanceOneTick()
 		newBoard := game.getCurrentBoard()
 
@@ -159,7 +155,7 @@ func TestFourDeath(t *testing.T) {
 
 	game.initialize(board)
 
-	for i := 0; i<= 10; i++ {
+	for i := 0; i <= 10; i++ {
 		game.advanceOneTick()
 		newBoard := game.getCurrentBoard()
 
@@ -173,5 +169,3 @@ func TestFourDeath(t *testing.T) {
 		}
 	}
 }
-
-
