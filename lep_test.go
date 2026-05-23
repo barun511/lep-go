@@ -169,3 +169,42 @@ func TestFourDeath(t *testing.T) {
 		}
 	}
 }
+
+
+
+func TestCanAdvanceBlinkerManyTicks(t *testing.T) {
+	game := Game()
+
+	board := [][]bool{
+		{false, true, false},
+		{false, true, false},
+		{false, true, false},
+	}
+
+	game.initialize(board)
+
+
+	for i := 0; i<= 10; i++ {
+		game.advanceOneTick()
+		newBoard := game.getCurrentBoard()
+
+		if i%2 == 0 {
+			if !reflect.DeepEqual(newBoard, [][]bool{
+				{false, false, false},
+				{true, true, true},
+				{false, false, false},
+			}) {
+				t.Errorf("Board still does not tick correctly")
+			}
+		} else {
+			if !reflect.DeepEqual(newBoard, [][]bool{
+				{false, true, false},
+				{false, true, false},
+				{false, true, false},
+			}) {
+				t.Errorf("Board still does not tick correctly")
+			}
+		}
+	}
+}
+
