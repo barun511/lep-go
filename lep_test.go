@@ -2,6 +2,7 @@ package main
 
 import (
 	"math/rand/v2"
+	"reflect"
 	"testing"
 )
 
@@ -57,11 +58,11 @@ func TestCanAdvanceBlinkerOneTick(t *testing.T) {
 
 	newBoard := game.getCurrentBoard()
 
-	if newBoard != [][]bool{
+	if !reflect.DeepEqual(newBoard, [][]bool{
 		{false, false, false},
 		{true, true, true},
 		{false, false, false},
-	} {
+	}) {
 		t.Errorf("Board does not tick correctly")
 	}
 
@@ -69,11 +70,11 @@ func TestCanAdvanceBlinkerOneTick(t *testing.T) {
 
 	newBoard = game.getCurrentBoard()
 
-	if newBoard != [][]bool{
+	if !reflect.DeepEqual(newBoard, [][]bool{
 		{false, true, false},
 		{false, true, false},
 		{false, true, false},
-	} {
+	}) {
 		t.Errorf("Board still does not tick correctly")
 	}
 }
