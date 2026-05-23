@@ -1,13 +1,25 @@
 package main
 
 type game struct {
-	count int
+	count            int
+	isUnderpopulated bool
 }
 
 type Board [][]bool
 
 func (game *game) initialize(board Board) {
 	game.count = 0
+	count := 0
+	for i := range board {
+		for j := range board[i] {
+			if board[i][j] {
+				count += 1
+			}
+		}
+	}
+	if count <= 1 {
+		game.isUnderpopulated = true
+	}
 }
 
 func (game *game) advanceOneTick() {
@@ -15,6 +27,13 @@ func (game *game) advanceOneTick() {
 }
 
 func (game *game) getCurrentBoard() [][]bool {
+	if game.isUnderpopulated {
+		return [][]bool{
+			{false, false, false},
+			{false, false, false},
+			{false, false, false},
+		}
+	}
 	if game.count == 1 {
 		return [][]bool{
 			{false, false, false},
