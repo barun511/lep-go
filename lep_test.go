@@ -1,6 +1,7 @@
 package main
 
 import (
+	"math/rand/v2"
 	"testing"
 )
 
@@ -11,13 +12,21 @@ func TestInitialGame(t *testing.T) {
 	}
 }
 
-func TestCanInitializeGame(t *testing.T) {
+func TestCanInitializeGameWithRandomBoardSize(t *testing.T) {
 	game := Game()
 
-	board := [2][2]bool{
-		{true,false},
-		{false,true},
+	board := make([][]bool, rand.IntN(5) + 2)
+
+	for i := range board {
+		board[i] = make([]bool, rand.IntN(5) + 2)
+	}
+
+	for i := range board {
+		for j := range board[i] {
+			board[i][j] = rand.IntN(1) % 2 == 0;
+		}
 	}
 
 	game.initialize(board)
 }
+
