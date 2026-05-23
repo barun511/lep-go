@@ -57,11 +57,23 @@ func TestCanAdvanceBlinkerOneTick(t *testing.T) {
 
 	newBoard := game.getCurrentBoard()
 
-	if newBoard != [3][3]bool{
+	if newBoard != [][]bool{
 		{false, false, false},
 		{true, true, true},
 		{false, false, false},
 	} {
 		t.Errorf("Board does not tick correctly")
 	}
+
+	game.advanceOneTick()
+
+	if newBoard != [][]bool{
+		{false, true, false},
+		{false, true, false},
+		{false, true, false},
+	} {
+		t.Errorf("Board still does not tick correctly")
+	}
 }
+
+
