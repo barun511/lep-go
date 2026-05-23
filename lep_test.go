@@ -30,3 +30,15 @@ func TestCanInitializeGameWithRandomBoardSize(t *testing.T) {
 	game.initialize(board)
 }
 
+
+func TestCanInitializeGameWithSpecificBoardSize(t *testing.T) {
+	game := Game()
+
+	board := [3][3]bool {
+		{false, true, false},
+		{false, true, false},
+		{false, true, false},
+	}
+
+	game.initialize(board)
+}
