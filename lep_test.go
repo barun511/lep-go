@@ -80,3 +80,42 @@ func TestCanAdvanceBlinkerOneTick(t *testing.T) {
 }
 
 
+
+func TestUnderpopulationSingleCell(t *testing.T) {
+	game := Game()
+
+	board := [][]bool{
+		{false, false, false},
+		{false, true, false},
+		{false, false, false},
+	}
+
+	game.initialize(board)
+
+	game.advanceOneTick()
+
+	newBoard := game.getCurrentBoard()
+
+	if !reflect.DeepEqual(newBoard, [][]bool{
+		{false, false, false},
+		{false, false, false},
+		{false, false, false},
+	}) {
+		t.Errorf("Board does not tick correctly")
+	}
+
+	for i := 0; i<= 10; i++ {
+		game.advanceOneTick()
+		newBoard = game.getCurrentBoard()
+
+		if !reflect.DeepEqual(newBoard, [][]bool{
+			{false, false, false},
+			{false, false, false},
+			{false, false, false},
+		}) {
+			t.Errorf("Board still does not tick correctly")
+		}
+	}
+}
+
+
